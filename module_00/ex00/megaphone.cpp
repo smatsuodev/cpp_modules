@@ -13,4 +13,6 @@ int main(int argc, char **argv) {
 			std::cout << (char) toupper(str[j]);
 	}
 	std::cout << std::endl;
+
+	return 0;
 }
