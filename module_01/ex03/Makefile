@@ -15,3 +15,5 @@ $(NAME): $(OBJS)
 clean:
 	-$(RM) $(OBJS)
 	-$(RM) $(NAME)
+
+.PHONY: all clean
