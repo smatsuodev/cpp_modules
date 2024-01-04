@@ -30,7 +30,8 @@ static void print_row(const std::string data[4]) {
 		if (data[i].length() > 10)
 			std::cout << data[i].substr(0, 9) << '.';
 		else
-			std::cout << std::right << std::setw(10) << std::setfill(' ') << data[i];
+			std::cout << std::right << std::setw(10) << std::setfill(' ')
+					  << data[i];
 
 		std::cout << '|';
 	}
