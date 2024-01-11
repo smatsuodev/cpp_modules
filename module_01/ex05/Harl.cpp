@@ -32,14 +32,14 @@ void Harl::info() {
 void Harl::warning() {
 	std::cout
 		<< "\033[48;2;187;181;42m \033[30mW \033[0m "
-		<< "I think I deserve to have some extra bacon for free."
-		<< " I’ve been coming for years whereas you started working here since last month."
+		<< "\033[38;2;187;181;42mI think I deserve to have some extra bacon for free."
+		<< " I’ve been coming for years whereas you started working here since last month.\033[0m"
 		<< std::endl;
 }
 
 void Harl::error() {
 	std::cout
 		<< "\033[48;2;207;90;84m \033[30mE \033[0m "
-		<< "This is unacceptable! I want to speak to the manager now."
+		<< "\033[38;2;207;90;84mThis is unacceptable! I want to speak to the manager now.\033[0m"
 		<< std::endl;
 }
