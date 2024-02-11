@@ -5,7 +5,7 @@ void Harl::complain(std::string level) {
 	const char *levels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 	void (Harl::*fns[])() = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 
-	for (int i = 0; i < sizeof(levels) / sizeof(char *); i++) {
+	for (unsigned long i = 0; i < sizeof(levels) / sizeof(char *); i++) {
 		if (level == levels[i]) {
 			(this->*(fns[i]))();
 			return;

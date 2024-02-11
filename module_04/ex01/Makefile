@@ -1,5 +1,5 @@
-NAME = test
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+NAME = main
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address
 
 SRCS = $(wildcard *.cpp)
 OBJS = $(SRCS:.cpp=.o)

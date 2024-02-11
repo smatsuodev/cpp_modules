@@ -80,6 +80,7 @@ Fixed Fixed::operator/(const Fixed &rhs) const {
 }
 
 Fixed Fixed::operator++(int _v) {
+	(void) _v;
 	Fixed tmp = *this;
 
 	setRawBits(this->getRawBits() + 1);
@@ -87,6 +88,7 @@ Fixed Fixed::operator++(int _v) {
 }
 
 Fixed Fixed::operator--(int _v) {
+	(void) _v;
 	Fixed tmp = *this;
 
 	setRawBits(this->getRawBits() - 1);

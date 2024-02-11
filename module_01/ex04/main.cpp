@@ -9,7 +9,7 @@ static std::string replace(
 ) {
 	std::string replaced;
 
-	for (int i = 0; i < target.length(); i++) {
+	for (unsigned long i = 0; i < target.length(); i++) {
 		if (strncmp(target.c_str() + i, old_str.c_str(), old_str.length()) == 0) {
 			replaced += new_str;
 			i += old_str.length() - 1;

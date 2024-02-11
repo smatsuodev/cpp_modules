@@ -4,7 +4,7 @@
 int Harl::get_level_index(std::string level) {
 	static const char *levels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 
-	for (int i = 0; i < sizeof(levels) / sizeof(char *); i++) {
+	for (unsigned long i = 0; i < sizeof(levels) / sizeof(char *); i++) {
 		if (level == levels[i])
 			return (i);
 	}
