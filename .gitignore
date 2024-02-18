@@ -1,3 +1,5 @@
 *.o
 .idea
 *.sh
+.DS_Store
+harlFilter

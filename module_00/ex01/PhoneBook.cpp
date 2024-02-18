@@ -58,11 +58,18 @@ void PhoneBook::show_choose_contact_dialog() const {
 	std::string input;
 	ask_question("Choose index", input);
 
-	int index = std::stoi(input);
-	if (index >= num_of_contacts || index < 0) {
-		std::cout << "\033[31mError: out of range\033[0m" << std::endl;
+	if (input.size() != 1 || input[0] < '0' || input[0] > '9') {
+		close_dialog_with_error("wrong index");
 		return;
 	}
+
+	int index = std::stoi(input);
+	if (index >= num_of_contacts) {
+		close_dialog_with_error("out of range");
+		return;
+	}
+
+	close_dialog_with_ok();
 
 	contacts[index].show_profile();
 }
