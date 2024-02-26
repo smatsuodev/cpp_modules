@@ -10,10 +10,6 @@ Dog::Dog(const Dog &dog) {
 	*this = dog;
 }
 
-Dog::~Dog() {
-	std::cout << "Dog destructor called" << std::endl;
-}
-
 Dog &Dog::operator=(const Dog &dog) {
 	if (this == &dog) {
 		return *this;

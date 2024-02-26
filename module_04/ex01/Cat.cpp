@@ -10,10 +10,6 @@ Cat::Cat(const Cat &cat) {
 	*this = cat;
 }
 
-Cat::~Cat() {
-	std::cout << "Cat destructor called" << std::endl;
-}
-
 Cat &Cat::operator=(const Cat &cat) {
 	if (this == &cat) {
 		return *this;

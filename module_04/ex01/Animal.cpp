@@ -5,7 +5,7 @@ Animal::Animal() : brain(new Brain) {
 	std::cout << "Animal constructor called" << std::endl;
 }
 
-Animal::Animal(const std::string &type) : type(type), brain(new Brain) {
+Animal::Animal(const std::string &type) : brain(new Brain), type(type) {
 	std::cout << "Animal constructor called" << std::endl;
 }
 

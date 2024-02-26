@@ -1,5 +1,5 @@
 NAME = main
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRCS = $(wildcard *.cpp)
 OBJS = $(SRCS:.cpp=.o)
@@ -12,5 +12,7 @@ $(NAME): $(OBJS)
 clean:
 	-$(RM) $(OBJS)
 	-$(RM) $(NAME)
+
+re: clean all
 
 .PHONY: all clean

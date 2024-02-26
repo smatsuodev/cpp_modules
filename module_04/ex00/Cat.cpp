@@ -11,10 +11,6 @@ Cat::Cat(const Cat &cat) {
 	*this = cat;
 }
 
-Cat::~Cat() {
-	std::cout << "Cat destructor called" << std::endl;
-}
-
 Cat &Cat::operator=(const Cat &cat) {
 	type = cat.type;
 	return *this;
