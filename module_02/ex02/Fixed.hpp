@@ -28,8 +28,8 @@ public:
 	Fixed operator-(const Fixed &rhs) const;
 	Fixed operator*(const Fixed &rhs) const;
 	Fixed operator/(const Fixed &rhs) const;
-	Fixed operator++(int _v);
-	Fixed operator--(int _v);
+	const Fixed operator++(int _v);
+	const Fixed operator--(int _v);
 	Fixed &operator++();
 	Fixed &operator--();
 	static Fixed &min(Fixed &a, Fixed &b);
