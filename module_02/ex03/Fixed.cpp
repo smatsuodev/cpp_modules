@@ -2,7 +2,9 @@
 #include <iostream>
 #include <cmath>
 
-Fixed::Fixed() : value(0) {}
+Fixed::Fixed() : value(0) {
+	std::cout << "Default constructor called" << std::endl;
+}
 
 Fixed::Fixed(const int value) {
 	this->value = value << fractional_bits;
@@ -12,18 +14,22 @@ Fixed::Fixed(const float value) {
 	this->value = roundf(value * (1 << fractional_bits));
 }
 
-Fixed::Fixed(const Fixed &fixed) {
-	*this = fixed;
+Fixed::Fixed(const Fixed &fixed) : value(fixed.value) {
+	std::cout << "Copy constructor called" << std::endl;
 }
 
-Fixed::~Fixed() {}
+Fixed::~Fixed() {
+	std::cout << "Destructor called" << std::endl;
+}
 
 Fixed &Fixed::operator=(const Fixed &fixed) {
-	value = fixed.getRawBits();
+	std::cout << "Copy assignment operator called" << std::endl;
+	value = fixed.value;
 	return *this;
 }
 
 int Fixed::getRawBits() const {
+	std::cout << "getRawBits member function called" << std::endl;
 	return value;
 }
 
@@ -79,7 +85,7 @@ Fixed Fixed::operator/(const Fixed &rhs) const {
 	return Fixed(this->toFloat() / rhs.toFloat());
 }
 
-Fixed Fixed::operator++(int _v) {
+const Fixed Fixed::operator++(int _v) {
 	(void) _v;
 	Fixed tmp = *this;
 
@@ -87,7 +93,7 @@ Fixed Fixed::operator++(int _v) {
 	return tmp;
 }
 
-Fixed Fixed::operator--(int _v) {
+const Fixed Fixed::operator--(int _v) {
 	(void) _v;
 	Fixed tmp = *this;
 
