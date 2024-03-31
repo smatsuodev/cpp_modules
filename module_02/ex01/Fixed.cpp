@@ -14,9 +14,8 @@ Fixed::Fixed(const float value) {
 	this->value = roundf(value * (1 << fractional_bits));
 }
 
-Fixed::Fixed(const Fixed &fixed) {
+Fixed::Fixed(const Fixed &fixed) : value(fixed.value) {
 	std::cout << "Copy constructor called" << std::endl;
-	*this = fixed;
 }
 
 Fixed::~Fixed() {
@@ -25,7 +24,7 @@ Fixed::~Fixed() {
 
 Fixed &Fixed::operator=(const Fixed &fixed) {
 	std::cout << "Copy assignment operator called" << std::endl;
-	value = fixed.getRawBits();
+	value = fixed.value;
 	return *this;
 }
 
