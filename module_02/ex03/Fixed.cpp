@@ -3,7 +3,6 @@
 #include <cmath>
 
 Fixed::Fixed() : value(0) {
-	std::cout << "Default constructor called" << std::endl;
 }
 
 Fixed::Fixed(const int value) {
@@ -15,30 +14,28 @@ Fixed::Fixed(const float value) {
 }
 
 Fixed::Fixed(const Fixed &fixed) : value(fixed.value) {
-	std::cout << "Copy constructor called" << std::endl;
 }
 
 Fixed::~Fixed() {
-	std::cout << "Destructor called" << std::endl;
 }
 
 Fixed &Fixed::operator=(const Fixed &fixed) {
-	std::cout << "Copy assignment operator called" << std::endl;
-	value = fixed.value;
+	if (this != &fixed) {
+		value = fixed.value;
+	}
 	return *this;
 }
 
 int Fixed::getRawBits() const {
-	std::cout << "getRawBits member function called" << std::endl;
 	return value;
 }
 
-void Fixed::setRawBits(const int raw) {
+void Fixed::setRawBits(int const raw) {
 	value = raw;
 }
 
 float Fixed::toFloat() const {
-	return (float) this->value / (1 << fractional_bits);
+	return static_cast<float>(this->value) / (1 << fractional_bits);
 }
 
 float Fixed::toInt() const {
