@@ -2,19 +2,19 @@
 #include <iostream>
 
 DiamondTrap::DiamondTrap() {
+	std::cout << "Default DiamondTrap constructor called" << std::endl;
 	hit_point = FragTrap::hit_point;
 	energy_point = ScavTrap::energy_point;
 	attack_damage = FragTrap::attack_damage;
-	std::cout << "Default DiamondTrap constructor called" << std::endl;
 }
 
 DiamondTrap::DiamondTrap(const std::string &name) : FragTrap(name), ScavTrap(name) {
+	std::cout << "DiamondTrap constructor called" << std::endl;
 	this->name = name;
 	ClapTrap::name = name + "_clap_name";
 	hit_point = FragTrap::hit_point;
 	energy_point = ScavTrap::energy_point;
 	attack_damage = FragTrap::attack_damage;
-	std::cout << "DiamondTrap constructor called" << std::endl;
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap &diamondTrap) : FragTrap(diamondTrap) {
@@ -25,11 +25,13 @@ DiamondTrap::~DiamondTrap() {
 	std::cout << "DiamondTrap destructor called" << std::endl;
 }
 
-DiamondTrap &DiamondTrap::operator=(const DiamondTrap &diamondTrap) {
-	name = diamondTrap.name;
-	hit_point = diamondTrap.hit_point;
-	energy_point = diamondTrap.energy_point;
-	attack_damage = diamondTrap.attack_damage;
+DiamondTrap &DiamondTrap::operator=(const DiamondTrap &other) {
+	if (this != &other) {
+		name = other.name;
+		hit_point = other.hit_point;
+		energy_point = other.energy_point;
+		attack_damage = other.attack_damage;
+	}
 	return *this;
 }
 
