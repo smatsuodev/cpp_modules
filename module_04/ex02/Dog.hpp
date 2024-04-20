@@ -13,7 +13,7 @@ public:
 	~Dog();
 	Dog &operator=(const Dog &other);
 	void makeSound() const;
-	const std::string & getType() const;
+	const std::string &getType() const;
 };
 
 #endif

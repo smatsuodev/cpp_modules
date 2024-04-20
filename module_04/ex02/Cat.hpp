@@ -14,7 +14,7 @@ public:
 	~Cat();
 	Cat &operator=(const Cat &other);
 	void makeSound() const;
-	const std::string & getType() const;
+	const std::string &getType() const;
 };
 
 #endif
