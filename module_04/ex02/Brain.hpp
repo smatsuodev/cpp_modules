@@ -9,9 +9,9 @@ class Brain {
 
 public:
 	Brain();
-	Brain(const Brain &brain);
+	Brain(const Brain &other);
 	~Brain();
-	Brain &operator=(const Brain &brain);
+	Brain &operator=(const Brain &other);
 };
 
 #endif

@@ -5,11 +5,16 @@
 #include "Brain.hpp"
 
 class Cat : public Animal {
+	std::string type;
+	Brain *brain;
+
 public:
 	Cat();
 	Cat(const Cat &cat);
-	Cat &operator=(const Cat &cat);
+	~Cat();
+	Cat &operator=(const Cat &other);
 	void makeSound() const;
+	const std::string & getType() const;
 };
 
 #endif
