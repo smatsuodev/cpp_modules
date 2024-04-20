@@ -9,9 +9,8 @@ Animal::Animal(const std::string &type) : brain(new Brain), type(type) {
 	std::cout << "Animal constructor called" << std::endl;
 }
 
-Animal::Animal(const Animal &animal) {
+Animal::Animal(const Animal &other) : brain(new Brain(*other.brain)), type(other.type) {
 	std::cout << "Animal copy constructor called" << std::endl;
-	*this = animal;
 }
 
 Animal::~Animal() {
@@ -19,14 +18,12 @@ Animal::~Animal() {
 	delete brain;
 }
 
-Animal &Animal::operator=(const Animal &animal) {
-	if (this == &animal) {
-		return *this;
+Animal &Animal::operator=(const Animal &other) {
+	if (this != &other) {
+		type = other.type;
+		delete brain;
+		brain = new Brain(*other.brain);
 	}
-
-	type = animal.type;
-	delete brain;
-	brain = new Brain(*animal.brain);
 	return *this;
 }
 

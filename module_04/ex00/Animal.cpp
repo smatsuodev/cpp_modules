@@ -9,21 +9,22 @@ Animal::Animal(const std::string &type) : type(type) {
 	std::cout << "Animal constructor called" << std::endl;
 }
 
-Animal::Animal(const Animal &animal) {
+Animal::Animal(const Animal &other) : type(other.type) {
 	std::cout << "Animal copy constructor called" << std::endl;
-	*this = animal;
 }
 
 Animal::~Animal() {
 	std::cout << "Animal destructor called" << std::endl;
 }
 
-Animal &Animal::operator=(const Animal &animal) {
-	type = animal.type;
+Animal &Animal::operator=(const Animal &other) {
+	if (this != &other) {
+		type = other.type;
+	}
 	return *this;
 }
 
-void Animal::makeSound() const{
+void Animal::makeSound() const {
 	std::cout << "Hmm, what should I say?" << std::endl;
 }
 
