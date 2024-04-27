@@ -2,10 +2,10 @@
 #include "Cat.hpp"
 #include <iostream>
 
-__attribute__((destructor()))
-static void destructor() {
-	system("leaks -q main");
-}
+//__attribute__((destructor()))
+//static void destructor() {
+//	system("leaks -q main");
+//}
 
 int main() {
 	{

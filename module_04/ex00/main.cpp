@@ -3,6 +3,11 @@
 #include "WrongCat.hpp"
 #include <iostream>
 
+//__attribute__((destructor))
+//static void destructor() {
+//	system("leaks -q main");
+//}
+
 int main() {
 	{
 		const Animal *meta = new Animal();
