@@ -1,41 +1,50 @@
 #include "Character.hpp"
-#include "AMateria.hpp"
 
-Character::Character() {}
+Character::Character(std::string const &name) : name(name) {
+	for (int i = 0; i < 4; i++)
+		inventory[i] = NULL;
+}
 
-Character::Character(const std::string &name) : name(name) {}
+Character::Character(Character const &character) : name(character.name) {
+	for (int i = 0; i < 4; i++)
+		inventory[i] = character.inventory[i]->clone();
+}
 
-Character::Character(const Character &other) : name(other.name) {}
+Character::~Character() {
+	for (int i = 0; i < 4; i++)
+		delete inventory[i];
+}
 
-Character::~Character() {}
-
-Character &Character::operator=(const Character &other) {
-	name = other.name;
+Character &Character::operator=(Character const &character) {
+	if (this != &character) {
+		name = character.name;
+		for (int i = 0; i < 4; i++) {
+			delete inventory[i];
+			inventory[i] = character.inventory[i]->clone();
+		}
+	}
 	return *this;
 }
 
-const std::string &Character::getName() const {
+std::string const &Character::getName() const {
 	return name;
 }
 
 void Character::equip(AMateria *m) {
-	for (int i = 0; i < SLOT_SIZE; i++) {
-		if (slot[i] == NULL) {
-			slot[i] = m;
-			return;
+	for (int i = 0; i < 4; i++) {
+		if (inventory[i] == NULL) {
+			inventory[i] = m;
+			break;
 		}
 	}
 }
 
 void Character::unequip(int idx) {
-	if (idx < SLOT_SIZE) {
-		slot[idx] = NULL;
-	}
+	if (idx >= 0 && idx < 4)
+		inventory[idx] = NULL;
 }
 
 void Character::use(int idx, ICharacter &target) {
-	if (idx >= SLOT_SIZE)
-		return;
-
-	slot[idx]->use(target);
+	if (idx >= 0 && idx < 4 && inventory[idx] != NULL)
+		inventory[idx]->use(target);
 }

@@ -1,20 +1,19 @@
-#ifndef CHARACTER_HPP
-#define CHARACTER_HPP
+#ifndef CPP_MODULES_CHARACTER_HPP
+#define CPP_MODULES_CHARACTER_HPP
 
 #include "ICharacter.hpp"
 
 class Character : public ICharacter {
-	static const int SLOT_SIZE = 4;
-
+private:
 	std::string name;
-	AMateria *slot[SLOT_SIZE];
+	AMateria *inventory[4];
 
 public:
 	Character();
-	Character(const std::string &name);
-	Character(const Character &character);
+	Character(std::string const &name);
+	Character(Character const &character);
 	~Character();
-	Character &operator=(const Character &character);
+	Character &operator=(Character const &character);
 	std::string const &getName() const;
 	void equip(AMateria *m);
 	void unequip(int idx);
