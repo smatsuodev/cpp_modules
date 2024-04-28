@@ -1,6 +1,5 @@
 #include "Dog.hpp"
 #include "Cat.hpp"
-#include <iostream>
 
 //__attribute__((destructor()))
 //static void destructor() {
@@ -17,12 +16,16 @@ int main() {
 
 	{
 		const Dog j;
-		const Dog i = j;
+		{
+			const Dog i = j;
+		}
 	}
 
 	{
 		const Cat j;
-		const Cat i = j;
+		{
+			const Cat i = j;
+		}
 	}
 
 	return 0;

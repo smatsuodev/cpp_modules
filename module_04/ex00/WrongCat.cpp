@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-WrongCat::WrongCat() {
+WrongCat::WrongCat() : WrongAnimal("WrongCat") {
 	std::cout << "WrongCat constructor called" << std::endl;
 }
 
