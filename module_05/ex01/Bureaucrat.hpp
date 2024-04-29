@@ -2,6 +2,9 @@
 #define CPP_MODULES_BUREAUCRAT_HPP
 
 #include <string>
+#include "Form.hpp"
+
+class Form;
 
 class Bureaucrat {
 public:
@@ -26,6 +29,7 @@ public:
 
 	void incrementGrade() throw(GradeTooHighException);
 	void decrementGrade() throw(GradeTooLowException);
+	void signForm(Form &form) const;
 
 private:
 	std::string name_;
