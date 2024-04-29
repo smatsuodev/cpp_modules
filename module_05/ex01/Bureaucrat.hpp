@@ -8,15 +8,6 @@ class Form;
 
 class Bureaucrat {
 public:
-	Bureaucrat();
-	Bureaucrat(const std::string &name, unsigned int grade);
-	Bureaucrat(const Bureaucrat &other);
-	~Bureaucrat();
-	Bureaucrat &operator=(const Bureaucrat &other);
-	const std::string &getName() const;
-	unsigned int getGrade() const;
-
-
 	class GradeTooHighException : public std::exception {
 	public:
 		const char *what() const throw();
@@ -27,12 +18,20 @@ public:
 		const char *what() const throw();
 	};
 
+	Bureaucrat();
+	Bureaucrat(const std::string &name, unsigned int grade)
+	throw(GradeTooHighException, GradeTooLowException);
+	Bureaucrat(const Bureaucrat &other);
+	~Bureaucrat();
+	Bureaucrat &operator=(const Bureaucrat &other);
+	const std::string &getName() const;
+	unsigned int getGrade() const;
 	void incrementGrade() throw(GradeTooHighException);
 	void decrementGrade() throw(GradeTooLowException);
 	void signForm(Form &form) const;
 
 private:
-	std::string name_;
+	const std::string name_;
 	unsigned int grade_;
 };
 
