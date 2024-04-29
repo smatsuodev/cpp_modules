@@ -5,7 +5,6 @@
 #include "Brain.hpp"
 
 class Cat : public Animal {
-	std::string type;
 	Brain *brain;
 
 public:
@@ -14,7 +13,6 @@ public:
 	~Cat();
 	Cat &operator=(const Cat &other);
 	void makeSound() const;
-	const std::string &getType() const;
 };
 
 #endif

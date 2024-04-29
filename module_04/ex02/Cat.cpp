@@ -1,12 +1,14 @@
 #include "Cat.hpp"
 #include <iostream>
 
-Cat::Cat() : type("Cat"), brain(new Brain) {
+Cat::Cat() : brain(new Brain) {
 	std::cout << "Cat constructor called" << std::endl;
+	type = "Cat";
 }
 
-Cat::Cat(const Cat &other) : type(other.type), brain(new Brain) {
+Cat::Cat(const Cat &other) : brain(new Brain) {
 	std::cout << "Cat copy constructor called" << std::endl;
+	type = other.type;
 }
 
 Cat::~Cat() {
@@ -25,8 +27,4 @@ Cat &Cat::operator=(const Cat &other) {
 
 void Cat::makeSound() const {
 	std::cout << "Meow!" << std::endl;
-}
-
-const std::string &Cat::getType() const {
-	return type;
 }

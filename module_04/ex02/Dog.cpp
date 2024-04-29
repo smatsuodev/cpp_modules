@@ -1,12 +1,14 @@
 #include "Dog.hpp"
 #include <iostream>
 
-Dog::Dog() : type("Dog"), brain(new Brain) {
+Dog::Dog() : brain(new Brain) {
 	std::cout << "Dog constructor called" << std::endl;
+	type = "Dog";
 }
 
-Dog::Dog(const Dog &other) : type(other.type), brain(new Brain) {
+Dog::Dog(const Dog &other) : brain(new Brain) {
 	std::cout << "Dog copy constructor called" << std::endl;
+	type = other.type;
 }
 
 Dog::~Dog() {
@@ -25,8 +27,4 @@ Dog &Dog::operator=(const Dog &other) {
 
 void Dog::makeSound() const {
 	std::cout << "Bowwow!" << std::endl;
-}
-
-const std::string &Dog::getType() const {
-	return type;
 }
