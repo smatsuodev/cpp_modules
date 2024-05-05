@@ -122,7 +122,7 @@ int main() {
 		assert(mutantStack.top() == stack.top());
 		assert(mutantStack.size() == stack.size());
 
-		std::cout << "Test same as stack passed" << std::endl;
+		std::cout << "Test same as stack_ passed" << std::endl;
 	}
 	{
 		MutantStack<int> stack;
