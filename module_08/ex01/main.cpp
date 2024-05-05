@@ -15,7 +15,7 @@
 
 int main() {
 	{
-		Span sp (5);
+		Span sp(5);
 		sp.addNumber(6);
 		sp.addNumber(3);
 		sp.addNumber(17);
@@ -25,7 +25,7 @@ int main() {
 		assert(sp.longestSpan() == 14);
 	}
 	{
-		Span sp (10000);
+		Span sp(10000);
 		for (int i = 1; i <= 10000; i++) {
 			sp.addNumber(i);
 		}
@@ -33,14 +33,14 @@ int main() {
 		assert(sp.longestSpan() == 1);
 	}
 	{
-		Span sp (10000);
+		Span sp(10000);
 		for (int i = 1; i <= 10000; i++) {
 			sp.addNumber(i);
 		}
 		ASSERT_EXCEPT(sp.addNumber(1), std::runtime_error);
 	}
 	{
-		Span sp (10000);
+		Span sp(10000);
 		ASSERT_EXCEPT(sp.shortestSpan(), std::runtime_error);
 		ASSERT_EXCEPT(sp.longestSpan(), std::runtime_error);
 		sp.addNumber(0);
@@ -49,9 +49,11 @@ int main() {
 	}
 	{
 		Span sp(3);
-		sp.addNumber(INT_MIN);
-		sp.addNumber(INT_MAX);
-		sp.addNumber(INT_MAX);
+		std::vector<int> numbers;
+		numbers.push_back(INT_MAX);
+		numbers.push_back(INT_MAX);
+		numbers.push_back(INT_MIN);
+		sp.addNumbers<std::vector>(numbers.begin(), numbers.end());
 		assert(sp.shortestSpan() == 0);
 		assert(sp.longestSpan() == UINT_MAX);
 	}
