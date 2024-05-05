@@ -7,6 +7,17 @@
 //	system("leaks -q main");
 //}
 
+#define ASSERT_EXCEPT(expr, exception) \
+    {                          \
+        bool hasThrew = false;                       \
+        try { \
+            expr; \
+        } catch (const exception &e) { \
+            hasThrew = true; \
+        }                   \
+        assert(hasThrew); \
+    }
+
 int main() {
 	{
 		Array<int> array(3);
@@ -147,5 +158,12 @@ int main() {
 		assert(assigned[2][1] == 8);
 		assert(assigned[2][2] == 9);
 		std::cout << "Array of Array tests passed" << std::endl;
+	}
+
+	{
+		Array<int> array(3);
+		ASSERT_EXCEPT(array[3], std::exception);
+
+		std::cout<<"Out of bound tests passed"<<std::endl;
 	}
 }
