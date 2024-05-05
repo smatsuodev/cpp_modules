@@ -6,8 +6,8 @@ OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	c++ $(CXXFLAGS) -o $@ $^
+$(NAME): $(OBJS) iter.hpp
+	c++ $(CXXFLAGS) -o $@ $(OBJS)
 
 clean:
 	-$(RM) $(OBJS)

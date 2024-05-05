@@ -6,7 +6,7 @@ OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJS) whatever.hpp
+$(NAME): $(OBJS) Array.hpp
 	c++ $(CXXFLAGS) -o $@ $(OBJS)
 
 clean:

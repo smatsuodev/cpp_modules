@@ -121,7 +121,7 @@ void ScalarConverter::convert(const std::string &input) {
 	ss >> inputAsInt;
 	bool didOverflowAsInt = !ss;
 
-	if (input.size()==1&&isalpha(input[0])) {
+	if (input.size() == 1 && isalpha(input[0])) {
 		std::cout << "char: " << input[0] << std::endl
 				  << "int: impossible\n"
 				  << "float: impossible\n"
@@ -156,4 +156,17 @@ void ScalarConverter::convert(const std::string &input) {
 		convertAsChar(input);
 	else
 		convertAsInt(input);
+}
+
+ScalarConverter::ScalarConverter() {}
+
+ScalarConverter::ScalarConverter(const ScalarConverter &other) {
+	(void) other;
+}
+
+ScalarConverter::~ScalarConverter() {}
+
+ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other) {
+	(void) other;
+	return *this;
 }

@@ -1,11 +1,11 @@
 #ifndef ITER_HPP
 #define ITER_HPP
 
-#include <cstdlib>
+#include <cstddef>
 
-template<class T>
-void iter(T *array, size_t size, void(*f)(T value)) {
-	for (size_t i = 0; i < size; ++i) {
+template<class T, class U>
+void iter(T *array, std::size_t size, U f) {
+	for (std::size_t i = 0; i < size; ++i) {
 		f(array[i]);
 	}
 }
