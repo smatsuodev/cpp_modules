@@ -1,7 +1,8 @@
 #ifndef DATA_HPP
 #define DATA_HPP
 
-typedef struct {
+typedef struct
+{
 	int hoge;
 } Data;
 
