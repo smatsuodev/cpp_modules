@@ -1,7 +1,8 @@
 #include "ScalarConverter.hpp"
 #include <iostream>
 
-int main() {
+int main()
+{
 	ScalarConverter::convert("0");
 	std::cout << std::endl;
 	ScalarConverter::convert("42");
@@ -15,5 +16,20 @@ int main() {
 	ScalarConverter::convert("3.14");
 	std::cout << std::endl;
 	ScalarConverter::convert("a");
+	std::cout << std::endl;
+	ScalarConverter::convert("ab");
+	std::cout << std::endl;
+	ScalarConverter::convert("nan");
+	std::cout << std::endl;
+	ScalarConverter::convert("inf");
+	std::cout << std::endl;
+	ScalarConverter::convert("-inf");
+	std::cout << std::endl;
+	ScalarConverter::convert("+inf");
+	std::cout << std::endl;
+	ScalarConverter::convert("-inff");
+	std::cout << std::endl;
+	ScalarConverter::convert("+inff");
+	std::cout << std::endl;
 	return 0;
 }
