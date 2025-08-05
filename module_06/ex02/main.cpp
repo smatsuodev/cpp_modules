@@ -4,7 +4,8 @@
 #include "B.hpp"
 #include "C.hpp"
 
-int main() {
+int main()
+{
 	{
 		std::cout << "--- Test identify ---" << std::endl;
 		A a;
@@ -22,7 +23,7 @@ int main() {
 		std::cout << "---------------------" << std::endl;
 	}
 	{
-		Base * result = generate();
+		Base *result = generate();
 		identify(result);
 		delete result;
 	}
