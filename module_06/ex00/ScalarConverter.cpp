@@ -36,7 +36,7 @@ static void convertAsChar(const std::string &input)
 	try
 	{
 		int ascii = std::stoi(input);
-		if (std::isprint(ascii))
+		if (32 <= ascii && ascii <= 126)
 			std::cout
 				<< "'" << static_cast<char>(ascii) << "'" << std::endl;
 		else
