@@ -1,7 +1,8 @@
 NAME = main
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+CXX = c++
 
-SRCS = $(wildcard *.cpp)
+SRCS = main.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
@@ -11,6 +12,10 @@ $(NAME): $(OBJS) Array.hpp
 
 clean:
 	-$(RM) $(OBJS)
+
+fclean: clean
 	-$(RM) $(NAME)
 
-.PHONY: all clean
+re: fclean all
+
+.PHONY: all clean fclean re

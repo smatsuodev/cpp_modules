@@ -2,11 +2,6 @@
 #include <iostream>
 #include <cassert>
 
-//__attribute__((destructor))
-//static void destructor() {
-//	system("leaks -q main");
-//}
-
 #define ASSERT_EXCEPT(expr, exception) \
     {                          \
         bool hasThrew = false;                       \
