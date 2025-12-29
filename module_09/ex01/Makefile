@@ -1,9 +1,9 @@
 NAME = RPN
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = $(wildcard *.cpp)
+SRCS = main.cpp RPN.cpp
 OBJS = $(SRCS:.cpp=.o)
-HEADERS = $(wildcard *.hpp)
+HEADERS = RPN.hpp
 
 all: $(NAME)
 

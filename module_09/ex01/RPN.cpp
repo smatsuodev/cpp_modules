@@ -1,6 +1,7 @@
 #include "RPN.hpp"
 #include <map>
 #include <iostream>
+#include <cstdlib>
 
 void print_error() {
 	std::cout << "Error" << std::endl;
@@ -39,8 +40,11 @@ int RPN::calc(const std::string &input) {
 			push(lhs - rhs);
 		else if (c == '*')
 			push(lhs * rhs);
-		else if (c == '/')
+		else if (c == '/') {
+			if (rhs == 0)
+				print_error();
 			push(lhs / rhs);
+		}
 		else
 			print_error();
 	}
