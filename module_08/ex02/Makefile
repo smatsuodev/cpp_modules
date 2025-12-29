@@ -1,17 +1,22 @@
 NAME = main
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
+CXX = c++
 
-SRCS = $(wildcard *.cpp)
+SRCS = main.cpp
 OBJS = $(SRCS:.cpp=.o)
-HEADERS = $(wildcard *.hpp)
+HEADERS = MutantStack.hpp
 
 all: $(NAME)
 
 $(NAME): $(OBJS) $(HEADERS)
-	c++ $(CXXFLAGS) -o $@ $(OBJS)
+	$(CXX) $(CXXFLAGS) -o $@ $(OBJS)
 
 clean:
 	-$(RM) $(OBJS)
+
+fclean: clean
 	-$(RM) $(NAME)
 
-.PHONY: all clean
+re: fclean all
+
+.PHONY: all clean fclean re

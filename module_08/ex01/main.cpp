@@ -1,6 +1,7 @@
 #include "Span.hpp"
-#include <iostream>
+#include <climits>
 #include <cassert>
+#include <stdexcept>
 
 #define ASSERT_EXCEPT(expr, exception) \
     {                          \

@@ -1,6 +1,6 @@
 #include "easyfind.hpp"
-#include <iostream>
 #include <cassert>
+#include <vector>
 
 int main() {
 	std::vector<int> v;

@@ -1,4 +1,6 @@
 #include "Span.hpp"
+#include <stdexcept>
+#include <climits>
 
 Span::Span() : capacity_(0) {}
 
