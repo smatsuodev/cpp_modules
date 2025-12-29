@@ -1,18 +1,18 @@
 NAME = RPN
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -MMD -MP
+CXX = c++
 
 SRCS = main.cpp RPN.cpp
 OBJS = $(SRCS:.cpp=.o)
-HEADERS = RPN.hpp
+DEPS := $(OBJS:.o=.d)
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(HEADERS)
-	c++ $(CXXFLAGS) -o $@ $(OBJS)
+$(NAME): $(OBJS)
+	$(CXX) $(CXXFLAGS) -o $@ $(OBJS)
 
 clean:
 	-$(RM) $(OBJS)
-	-$(RM) $(NAME)
 
 fclean: clean
 	-$(RM) $(NAME)
@@ -20,3 +20,5 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
+
+-include $(DEPS)

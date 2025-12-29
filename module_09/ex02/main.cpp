@@ -1,11 +1,28 @@
+#include <vector>
+#include <deque>
+#include <iterator>
 #include <iostream>
 #include <sstream>
 #include <sys/time.h>
+#include <cstdlib>
 #include "PmergeMe.hpp"
 
 static void print_error(const std::string &message) {
 	std::cout << message << std::endl;
 	exit(1);
+}
+
+template <typename Iterator>
+static bool isSorted(Iterator first, Iterator last) {
+	typename std::iterator_traits<Iterator>::value_type prev = *first;
+	for (Iterator it = first; it != last; it++) {
+		if (it == first) continue;
+		if (prev > *it) return false;
+
+		prev = *it;
+	}
+
+	return true;
 }
 
 int main(int argc, char **argv) {
@@ -40,7 +57,7 @@ int main(int argc, char **argv) {
 	struct timeval start;
 	struct timeval end;
 	gettimeofday(&start, NULL);
-	std::vector<unsigned int> resultOfVec = pmergeMe(v);
+	std::vector<unsigned int> resultOfVec = pmergeMeVec(v);
 	std::cout << "After:";
 	for (size_t i = 0; i < resultOfVec.size(); ++i) {
 		std::cout << ' ' << resultOfVec[i];
@@ -48,7 +65,7 @@ int main(int argc, char **argv) {
 	std::cout << std::endl;
 	gettimeofday(&end, NULL);
 
-	if (std::is_sorted(resultOfVec.begin(), resultOfVec.end()))
+	if (isSorted(resultOfVec.begin(), resultOfVec.end()))
 		std::cout << "Time to process a range of " << v.size() << " elements with std::vector : "
 				  << end.tv_sec * 1000000 + end.tv_usec - start.tv_sec * 1000000 - start.tv_usec
 				  << " us" << std::endl;
@@ -56,9 +73,9 @@ int main(int argc, char **argv) {
 		std::cout << "Failed to sort with std::vector" << std::endl;
 
 	gettimeofday(&start, NULL);
-	std::deque<unsigned int> resultOfDeque = pmergeMe(d);
+	std::deque<unsigned int> resultOfDeque = pmergeMeDeq(d);
 	gettimeofday(&end, NULL);
-	if (std::is_sorted(resultOfDeque.begin(), resultOfDeque.end()))
+	if (isSorted(resultOfDeque.begin(), resultOfDeque.end()))
 		std::cout << "Time to process a range of " << v.size() << " elements with std::deque  : "
 				  << end.tv_sec * 1000000 + end.tv_usec - start.tv_sec * 1000000 - start.tv_usec
 				  << " us" << std::endl;
