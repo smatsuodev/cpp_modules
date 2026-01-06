@@ -1,5 +1,5 @@
 NAME = RPN
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -MMD -MP
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -MMD -MP -g -fsanitize=address
 CXX = c++
 
 SRCS = main.cpp RPN.cpp

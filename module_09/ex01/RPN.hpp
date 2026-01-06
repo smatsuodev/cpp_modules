@@ -1,8 +1,8 @@
 #ifndef CPP_MODULES_RPN_HPP
 #define CPP_MODULES_RPN_HPP
 
+#include <stack>
 #include <string>
-#include <map>
 
 void print_error();
 
@@ -15,8 +15,7 @@ public:
 	int calc(const std::string &input);
 
 private:
-	std::map<unsigned int, int> stack_;
-	size_t top_;
+	std::stack<int> stack_;
 	void push(int value);
 	int pop();
 };

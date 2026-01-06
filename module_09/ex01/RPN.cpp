@@ -1,23 +1,27 @@
 #include "RPN.hpp"
-#include <map>
+#include <climits>
 #include <iostream>
 #include <cstdlib>
 
 void print_error() {
-	std::cout << "Error" << std::endl;
+	std::cerr << "Error" << std::endl;
 	exit(1);
 }
 
-RPN::RPN() : top_(0) {}
+void print_overflow() {
+	std::cerr << "Overflow" << std::endl;
+	exit(1);
+}
 
-RPN::RPN(const RPN &other) : stack_(other.stack_), top_(other.top_) {}
+RPN::RPN() {}
+
+RPN::RPN(const RPN &other) : stack_(other.stack_) {}
 
 RPN::~RPN() {}
 
 RPN &RPN::operator=(const RPN &other) {
 	if (this != &other) {
 		stack_ = other.stack_;
-		top_ = other.top_;
 	}
 	return *this;
 }
@@ -34,29 +38,47 @@ int RPN::calc(const std::string &input) {
 
 		int rhs = pop();
 		int lhs = pop();
-		if (c == '+')
+		if (c == '+') {
+			if ((rhs > 0 && lhs > INT_MAX - rhs) || (rhs < 0 && lhs < INT_MIN - rhs))
+				print_overflow();
 			push(lhs + rhs);
-		else if (c == '-')
+		}
+		else if (c == '-') {
+			if ((rhs < 0 && lhs > INT_MAX + rhs) || (rhs > 0 && lhs < INT_MIN + rhs))
+				print_overflow();
 			push(lhs - rhs);
-		else if (c == '*')
-			push(lhs * rhs);
+		}
+		else if (c == '*') {
+			if (lhs == 0 || rhs == 0) {
+				push(0);
+			} else {
+				if ((lhs > 0 && ((rhs > 0 && lhs > INT_MAX / rhs) || (rhs < 0 && rhs < INT_MIN / lhs)))
+					|| (lhs < 0 && ((rhs > 0 && lhs < INT_MIN / rhs) || (rhs < 0 && lhs < INT_MAX / rhs))))
+					print_overflow();
+				push(lhs * rhs);
+			}
+		}
 		else if (c == '/') {
 			if (rhs == 0)
 				print_error();
-			push(lhs / rhs);
+			else if (lhs == INT_MIN && rhs == -1)
+				print_overflow();
+			else
+				push(lhs / rhs);
 		}
 		else
 			print_error();
 	}
-	if (top_ != 1) print_error();
 	return pop();
 }
 
 void RPN::push(int value) {
-	stack_[top_++] = value;
+	stack_.push(value);
 }
 
 int RPN::pop() {
-	if (top_ == 0) print_error();
-	return stack_[--top_];
+	if (stack_.size() == 0) print_error();
+	int value = stack_.top();
+	stack_.pop();
+	return value;
 }
